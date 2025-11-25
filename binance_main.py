@@ -528,7 +528,7 @@ class BinanceFuturesTrader:
         price_change = (kline['close'] - kline['open']) / kline['open'] * 100
 
         return (kline['close'] < kline['ma_60'] < kline['ma_20'] < kline['open'] and
-                abs(price_change) < 4)  # 涨跌幅小于5%
+                abs(price_change) < 4)  # 涨跌幅小于4%
 
     def cancel_associated_orders(self, symbol):
         """撤销与指定交易对关联的所有止损单"""
@@ -711,4 +711,5 @@ if __name__ == "__main__":
     from config import API_KEY,API_SECRET
 
     trader = BinanceFuturesTrader(API_KEY, API_SECRET)
+
     trader.run_strategy()
